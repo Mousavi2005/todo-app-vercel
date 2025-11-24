@@ -1,14 +1,16 @@
 import Header from "./header"
 import TaskInput from "./input"
 import TasksList from "./tasks-list"
+import Footer from "./footer"
 
 export default function Section() {
 
     return (
-        <div className="relative bg-blue-100 h-full w-[45%]">
+        <div className="relative h-full w-[45%]">
             <Header></Header>
             <TaskInput></TaskInput>
             <TasksList></TasksList>
+            <Footer></Footer>
         </div>
     )
 }

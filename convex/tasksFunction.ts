@@ -7,6 +7,18 @@ export const getAllTasks = query({
     }
 })
 
+export const getActiveTasks = query({
+    handler: async (ctx) => {
+        return (await ctx.db.query('tasks').collect()).filter((t) => t.isCompleted === false)
+    }
+})
+
+export const getCompletedTasks = query({
+    handler: async (ctx) => {
+        return (await ctx.db.query('tasks').collect()).filter((t) => t.isCompleted === true)
+    }
+})
+
 export const createTask = mutation({
     args: { taskName: v.string() },
     handler: async (ctx, args) => {
@@ -24,5 +36,15 @@ export const toggleCompleteTask = mutation({
         await ctx.db.patch(args.taskId, {
             isCompleted: !task.isCompleted
         })
+    }
+})
+
+export const clearCompletedTasks = mutation({
+    args: {},
+    handler: async (ctx) => {
+        const completed = (await ctx.db.query('tasks').collect()).filter((t) => t.isCompleted === true)
+        for (const task of completed) {
+            await ctx.db.delete(task._id)
+        }
     }
 })

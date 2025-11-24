@@ -3,13 +3,18 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { ConvexProvider, ConvexReactClient } from "convex/react"
+import { Provider } from 'react-redux'
+import { store } from './store/store.ts'
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <ConvexProvider client={convex}>
-            <App />
-        </ConvexProvider>
+        <Provider store={store}>
+            <ConvexProvider client={convex}>
+                <App />
+            </ConvexProvider>
+        </Provider>
+
     </StrictMode>,
 )

@@ -1,9 +1,11 @@
-import { configureStore, ReducerType } from '@reduxjs/toolkit'
-import aReducer from '../slices/a'
+import { configureStore } from '@reduxjs/toolkit'
+import activeSectionReducerReducer from '../slices/activeSection'
+import darkModeReducer from '../slices/darkMode'
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
-        a: aReducer
+        activeSection: activeSectionReducerReducer,
+        darkMode: darkModeReducer
     }
 })
 
