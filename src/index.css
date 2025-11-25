@@ -4,6 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.border-gradient-light:hover {
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to bottom, hsl(192,100%,67%), hsl(280,87%,65%)) border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
+}
+
+.border-gradient-dark:hover {
+  background: linear-gradient(hsl(235,24%,19%), hsl(235,24%,19%)) padding-box,
+              linear-gradient(to bottom, hsl(192,100%,67%), hsl(280,87%,65%)) border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
+}
+
+
+
 /* :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;

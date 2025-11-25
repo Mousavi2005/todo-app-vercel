@@ -29,6 +29,13 @@ export const createTask = mutation({
     }
 })
 
+export const deleteTask = mutation({
+    args: {taskId: v.id('tasks')},
+    handler: async (ctx, args) => {
+        await ctx.db.delete(args.taskId)
+    }
+})
+
 export const toggleCompleteTask = mutation({
     args: { taskId: v.id('tasks') },
     handler: async (ctx, args) => {

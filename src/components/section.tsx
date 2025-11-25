@@ -6,7 +6,7 @@ import Footer from "./footer"
 export default function Section() {
 
     return (
-        <div className="relative h-full w-[45%]">
+        <div className="relative h-full w-[90%] md:w-[55%]">
             <Header></Header>
             <TaskInput></TaskInput>
             <TasksList></TasksList>

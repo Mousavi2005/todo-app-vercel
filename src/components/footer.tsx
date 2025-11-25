@@ -13,30 +13,55 @@ export default function Footer() {
     const isDark = useSelector((state: RootState) => state.darkMode.isDark)
 
     return (
-        <footer className={`${isDark? "bg-[hsl(235,24%,19%)]" : "bg-[hsl(0,0%,98%)]"} flex w-full h-12 px-3 rounded-b-md text-gray-400`}>
+        <footer className={`${isDark? "bg-[hsl(235,24%,19%)]" : "bg-[hsl(0,0%,98%)]"} flex justify-center w-full h-12 px-3 mt-5 md:mt-0 rounded-md md:rounded-t-none text-gray-400`}>
 
-            <div className='flex flex-1 items-center justify-start cursor-default'>
+            <div className='hidden md:flex flex-1 items-center justify-start cursor-default font-normal'>
                 {leftItems} items left
             </div>
 
-            <div className='flex flex-1 gap-6 items-center justify-between'>
+            <div className='w-[65%] flex md:flex-1 gap-6 items-center justify-between'>
                 <button
                     onClick={() => dispatch(setActiveSection('All'))}
-                    className={`${activeSection === 'All' ? "text-[hsl(220,98%,61%)]" : ""}`}
+                    className={`
+                        font-normal
+                        ${activeSection === "All"
+                            ? "text-[hsl(220,98%,61%)]"
+                            : isDark
+                            ? "hover:text-white"
+                            : "hover:text-gray-800"
+                        }
+                        `}
                 >All</button>
                 <button
                     onClick={() => dispatch(setActiveSection('Active'))}
-                    className={`${activeSection === 'Active' ? "text-[hsl(220,98%,61%)]" : ""}`}
+                    className={`
+                        font-normal
+                        ${activeSection === "Active"
+                            ? "text-[hsl(220,98%,61%)]"
+                            : isDark
+                            ? "hover:text-white"
+                            : "hover:text-gray-800"
+                        }
+                        `}
                 >Active</button>
                 <button
                     onClick={() => dispatch(setActiveSection('Completed'))}
-                    className={`${activeSection === 'Completed' ? "text-[hsl(220,98%,61%)]" : ""}`}
+                    className={`
+                        font-normal
+                        ${activeSection === "Completed"
+                            ? "text-[hsl(220,98%,61%)]"
+                            : isDark
+                            ? "hover:text-white"
+                            : "hover:text-gray-800"
+                        }
+                        `}
                 >Completed</button>
             </div>
 
-            <div className='flex flex-1 items-center justify-end'>
+            <div className='hidden md:flex flex-1 items-center justify-end'>
                 <button
                     onClick={() => clearCompleted()}
+                    className={`${isDark ? "hover:text-white" : "hover:text-gray-800"} font-normal`}
                 >clear completed
                 </button>
             </div>
